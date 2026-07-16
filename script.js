@@ -11,40 +11,51 @@
      image -> path to the mascot art for that line
    Put new art inside the images/ folder and reference it here. */
 const dialogues = [
+
   {
+
     text: "happy dialogue 1",
+
     image: "images/happy.png"
+
   },
+
   {
+
     text: "thinking dialogue 1",
+
     image: "images/thinking.png"
+
   },
+
   {
+
     text: "wave dialogue 1",
+
     image: "images/wave.png"
+
   },
+
   {
+
     text: "idle dialogue 1",
+
     image: "images/idle.png"
+
   }
+
 ];
 
-/* ---------- 2. DIALOGUE ENGINE ---------- */
+/* ---------- 2. DIALOGUE ENGINE ----------
+   One random dialogue is picked when the page loads and stays put —
+   to see a different one, the visitor just reloads the page. */
 const mascotImg = document.getElementById("mascot-img");
 const mascotFrame = document.querySelector(".mascot-frame");
 const dialogueText = document.getElementById("dialogue-text");
 
-let lastIndex = -1;
-const DIALOGUE_INTERVAL = 8000; // ms between automatic dialogue changes
-
-// picks a random dialogue index that isn't the same as the last one shown
-function pickNextIndex() {
-  if (dialogues.length === 1) return 0;
-  let index;
-  do {
-    index = Math.floor(Math.random() * dialogues.length);
-  } while (index === lastIndex);
-  return index;
+// picks a random dialogue index
+function pickRandomIndex() {
+  return Math.floor(Math.random() * dialogues.length);
 }
 
 // swaps the mascot image + dialogue text with a short fade transition
@@ -63,20 +74,10 @@ function showDialogue(index) {
     mascotImg.classList.remove("fade-out");
     dialogueText.classList.remove("fade-out");
   }, 350); // matches the CSS transition duration for opacity
-
-  lastIndex = index;
 }
 
-function cycleDialogue() {
-  const nextIndex = pickNextIndex();
-  showDialogue(nextIndex);
-}
-
-// kick off the automatic cycle
-setInterval(cycleDialogue, DIALOGUE_INTERVAL);
-
-// optional: clicking the mascot also cycles to a new line, feels alive
-mascotImg.addEventListener("click", cycleDialogue);
+// pick one random dialogue as soon as the page loads
+showDialogue(pickRandomIndex());
 
 /* ---------- 3. BLINKING ---------- */
 // randomly triggers a quick "blink" squash on the mascot frame
