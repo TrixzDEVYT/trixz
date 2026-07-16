@@ -12,10 +12,6 @@
    Put new art inside the images/ folder and reference it here. */
 const dialogues = [
   {
-    text: "um... make yourself comfy!!",
-    image: "images/idle.png"
-  },
-  {
     text: "happy dialogue 1",
     image: "images/happy.png"
   },
