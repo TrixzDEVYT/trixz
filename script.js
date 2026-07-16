@@ -12,13 +12,25 @@
    Put new art inside the images/ folder and reference it here. */
 const dialogues = [
   {
-    text: "Welcome to my page!!",
-    image: "images/idle.svg"
+    text: "um... make yourself comfy!!",
+    image: "images/idle.png"
   },
   {
-    text: "What brings ya here today? :D",
-    image: "images/happy.svg"
+    text: "happy dialogue 1",
+    image: "images/happy.png"
   },
+  {
+    text: "thinking dialogue 1",
+    image: "images/thinking.png"
+  },
+  {
+    text: "wave dialogue 1",
+    image: "images/wave.png"
+  },
+  {
+    text: "idle dialogue 1",
+    image: "images/idle.png"
+  }
 ];
 
 /* ---------- 2. DIALOGUE ENGINE ---------- */
@@ -27,7 +39,7 @@ const mascotFrame = document.querySelector(".mascot-frame");
 const dialogueText = document.getElementById("dialogue-text");
 
 let lastIndex = -1;
-const DIALOGUE_INTERVAL = 800000000000000000; // ms between automatic dialogue changes
+const DIALOGUE_INTERVAL = 8000; // ms between automatic dialogue changes
 
 // picks a random dialogue index that isn't the same as the last one shown
 function pickNextIndex() {
